@@ -1,7 +1,7 @@
 export default function Superhero({
   nom,
   description,
-  films = "Aucun film pour ce superhero",
+  films = ["Aucun film pour ce superhero"],
   ...props
 }) {
   return (
@@ -10,7 +10,11 @@ export default function Superhero({
       <p>{description}</p>
       <div>
         <b>Films :</b>
-        <ul>{films}</ul>
+        <ul>
+          {films.map((film) => (
+            <li>{film}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
