@@ -1,3 +1,9 @@
+.superheros {
+  display: flex;
+  gap: 15px;
+  margin: 0 15px;
+}
+
 .superhero {
   background-color: #f1f1f1;
   padding: 10px;
