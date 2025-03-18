@@ -1,11 +1,17 @@
-export default function Superhero() {
+export default function Superhero({
+  nom,
+  description,
+  films = "Aucun film pour ce superhero",
+  ...props
+}) {
   return (
     <div className="superhero">
-      <h2>Iron Man</h2>
-      <p>
-        Anthony « Tony » Stark, alias Iron Man est un super-héros évoluant dans
-        l'univers Marvel de la maison d'édition Marvel Comics.
-      </p>
+      <h2>{nom}</h2>
+      <p>{description}</p>
+      <div>
+        <b>Films :</b>
+        <ul>{films}</ul>
+      </div>
     </div>
   );
 }
