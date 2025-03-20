@@ -4,6 +4,7 @@ export default function Superhero({
   nom,
   description,
   films = ["Aucun film pour ce superhero"],
+  ...props
 }) {
   return (
     <div className="superhero">
@@ -13,7 +14,7 @@ export default function Superhero({
         <b>Films :</b>
         <ul>
           {films.map((film) => (
-            <li>{film}</li>
+            <li key={film}>{film}</li>
           ))}
         </ul>
       </div>
