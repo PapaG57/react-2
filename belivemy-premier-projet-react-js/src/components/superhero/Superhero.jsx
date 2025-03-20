@@ -1,8 +1,9 @@
+import "./Superhero.css";
+
 export default function Superhero({
   nom,
   description,
   films = ["Aucun film pour ce superhero"],
-  ...props
 }) {
   return (
     <div className="superhero">
