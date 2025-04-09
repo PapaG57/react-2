@@ -5,13 +5,23 @@ export default function Superhero({
   description,
   films = ["Aucun film pour ce superhero"],
   photo = ["./inconnu.png"],
+  details,
+  ...props
 }) {
   return (
     <div className="superhero">
       <img alt={`${nom} photo`} src={photo} />
       <h2>{nom}</h2>
       <p>{description}</p>
-      <div>
+      <div className="read-more">En savoir plus</div>
+      <div
+        style={{
+          whiteSpace: "pre-line",
+        }}
+      >
+        {details}
+      </div>
+      <div style={{ marginTop: 10 }}>
         <b>Films :</b>
         <ul>
           {films.map((film) => (
