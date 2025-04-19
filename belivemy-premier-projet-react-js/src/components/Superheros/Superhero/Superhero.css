@@ -19,4 +19,14 @@
 .read-more {
   font-weight: bold;
   margin-bottom: 10px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.read-more:hover {
+  color: #ed1d24;
+}
+
+.superheroPrefere {
+  background-color: #fde8e9;
 }

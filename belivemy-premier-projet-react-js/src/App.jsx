@@ -5,8 +5,17 @@ import Superheros from "./components/Superheros/Superheros";
 import ironman from "./assets/ironman.jpeg";
 import loki from "./assets/loki.jpeg";
 import captainamerica from "./assets/captainamerica.jpeg";
+import { useState } from "react";
 
 export default function App() {
+  // State
+  const [superHerosPrefere, setSuperheroPrefere] = useState();
+
+  // Fonction
+  const superheroClique = (nom) => {
+    setSuperheroPrefere(nom);
+  };
+
   return (
     <main>
       <h1>Marvel</h1>
@@ -23,6 +32,8 @@ Au début de sa carrière de super-héros, Tony Stark avait pour principale occu
 Le corps d'Iron Man est celui d'un homme normal, sans pouvoir surnaturel ou surhumain, mais rendu surpuissant quand il revêt l'une des nombreuses armures de haute technologie conçues à l'aide des impressionnantes compétences scientifiques de Stark. L'armure, pouvant voler à des vitesses supersoniques, confère à Tony Stark une force et une résistance surhumaines et est équipée de multiples armes, capteurs et systèmes électroniques."
           films={["Iron Man", "Iron Man 2", "Iron Man3"]}
           photo={ironman}
+          estLePrefere={superHerosPrefere == "Iron Man"}
+          superheroClique={superheroClique}
         />
         {/* Superhero numéro 2 /> */}
         <Superhero
@@ -36,6 +47,8 @@ Loki tient le rôle du pire ennemi de son demi-frère Thor. À la base un super-
 
 Le personnage a été adapté à l'univers cinématographique Marvel où il est interprété par l'acteur Tom Hiddleston."
           photo={loki}
+          estLePrefere={superHerosPrefere == "Loki"}
+          superheroClique={superheroClique}
         />
 
         {/* Superhero numéro 3 /> */}
@@ -50,6 +63,8 @@ Doté d'une condition physique au summum du potentiel humain, Captain America es
 
 Depuis les années 1960, Captain America fait partie de l'équipe de super-héros les Vengeurs (Avengers, et ses diverses versions) dont il est devenu au fil des ans l’un des piliers."
           photo={captainamerica}
+          estLePrefere={superHerosPrefere == "Captain America"}
+          superheroClique={superheroClique}
         />
       </Superheros>
     </main>

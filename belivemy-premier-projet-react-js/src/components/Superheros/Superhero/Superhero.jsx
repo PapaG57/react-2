@@ -1,4 +1,5 @@
 import "./Superhero.css";
+import { useState } from "react";
 
 export default function Superhero({
   nom,
@@ -6,21 +7,48 @@ export default function Superhero({
   films = ["Aucun film pour ce superhero"],
   photo = ["./inconnu.png"],
   details,
+  estLePrefere,
+  superheroClique,
   ...props
 }) {
+  // State
+  const [montrerLesDetails, setMontrerLesDetails] = useState(false);
+
+  let contenu = "";
+  if (montrerLesDetails) {
+    contenu = details;
+  }
+
   return (
-    <div className="superhero">
+    <div
+      className={`superhero ${estLePrefere && "superheroPrefere"}`}
+      onClick={() => superheroClique(nom)}
+    >
+      {/* Carte */}
       <img alt={`${nom} photo`} src={photo} />
       <h2>{nom}</h2>
       <p>{description}</p>
-      <div className="read-more">En savoir plus</div>
+
+      {/* Détails */}
       <div
-        style={{
-          whiteSpace: "pre-line",
-        }}
+        className="read-more"
+        onClick={() =>
+          setMontrerLesDetails((statePrecedent) => !statePrecedent)
+        }
       >
-        {details}
+        {montrerLesDetails ? "Masquer les détails" : "En savoir plus"}
       </div>
+      {montrerLesDetails && (
+        <div
+          style={{
+            whiteSpace: "pre-line",
+          }}
+        >
+          {details}
+        </div>
+      )}
+
+      {/* Films */}
       <div style={{ marginTop: 10 }}>
         <b>Films :</b>
         <ul>
