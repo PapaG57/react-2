@@ -5,20 +5,53 @@ import Superheros from "./components/Superheros/Superheros";
 import ironman from "./assets/ironman.jpeg";
 import loki from "./assets/loki.jpeg";
 import captainamerica from "./assets/captainamerica.jpeg";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function App() {
   // State
   const [superHerosPrefere, setSuperheroPrefere] = useState();
-  const [nomDuSuperhero, setNomDuSuperhero] = useState("Anonyme");
-  const [descriptionDuSuperhero, setDescriptionDuSuperhero] = useState(
-    "Pas de description définis"
-  );
-  const [photoDuSuperhero, setPhotoDuSuperhero] = useState("");
+  const [nouveauSuperhero, setNouveauSuperhero] = useState({
+    nom: "Anonyme",
+    photo: "",
+    description: "",
+  });
+
+  // Variables
+  const nom = useRef();
+  const description = useRef();
+  const photo = useRef();
+
+  // Cycles
+  useEffect(() => {
+    photo.current.focus();
+  }, [
+    nouveauSuperhero.nom,
+    nouveauSuperhero.description,
+    nouveauSuperhero.photo,
+  ]);
+  useEffect(() => {
+    nom.current.value = "";
+    description.current.value = "";
+    photo.current.value = "";
+  }, [nouveauSuperhero.nom]);
 
   // Fonction
   const superheroClique = (nom) => {
     setSuperheroPrefere(nom);
+  };
+  const sauvegarderLeSuperhero = () => {
+    setNouveauSuperhero((ancienSuperhero) => ({
+      ...ancienSuperhero,
+      nom: nom.current.value,
+    }));
+    setNouveauSuperhero((ancienSuperhero) => ({
+      ...ancienSuperhero,
+      photo: photo.current.value,
+    }));
+    setNouveauSuperhero((ancienSuperhero) => ({
+      ...ancienSuperhero,
+      description: description.current.value,
+    }));
   };
 
   return (
@@ -73,11 +106,15 @@ Depuis les années 1960, Captain America fait partie de l'équipe de super-héro
         />
 
         <Superhero
-          nom={nomDuSuperhero}
+          nom={nouveauSuperhero.nom}
           description={
-            descriptionDuSuperhero != "" ? descriptionDuSuperhero : undefined
+            nouveauSuperhero.description != ""
+              ? nouveauSuperhero.description
+              : undefined
           }
-          photo={photoDuSuperhero != "" ? photoDuSuperhero : undefined}
+          photo={
+            nouveauSuperhero.photo != "" ? nouveauSuperhero.photo : undefined
+          }
         />
 
         {/* Paramétrage de notre superhero */}
@@ -87,17 +124,14 @@ Depuis les années 1960, Captain America fait partie de l'équipe de super-héro
             padding: "15px",
           }}
         >
-          <h3 style={{ textAlign: "center" }}>Crée ton propre superhero</h3>
-          <div style={{ marginTop: 10 }}>
+          <h3 style={{ textAlign: "center" }}>Ajoute ton propre superhero</h3>
+          <div>
             <label htmlFor="nom">Photo</label>
             <input
               type="text"
               name="photo"
               id="photo"
-              value={photoDuSuperhero}
-              onChange={(event) => {
-                setPhotoDuSuperhero(event.target.value);
-              }}
+              ref={photo}
               style={{
                 padding: 5,
                 fontSise: 14,
@@ -106,16 +140,13 @@ Depuis les années 1960, Captain America fait partie de l'équipe de super-héro
               }}
             />
           </div>
-          <div>
+          <div style={{ marginTop: 10 }}>
             <label htmlFor="nom">Nom</label>
             <input
               type="text"
               name="nom"
               id="nom"
-              value={nomDuSuperhero}
-              onChange={(event) => {
-                setNomDuSuperhero(event.target.value);
-              }}
+              ref={nom}
               style={{
                 padding: 5,
                 fontSise: 14,
@@ -130,10 +161,7 @@ Depuis les années 1960, Captain America fait partie de l'équipe de super-héro
               type="text"
               name="description"
               id="description"
-              value={descriptionDuSuperhero}
-              onChange={(event) => {
-                setDescriptionDuSuperhero(event.target.value);
-              }}
+              ref={description}
               style={{
                 padding: 5,
                 fontSise: 14,
@@ -141,6 +169,12 @@ Depuis les années 1960, Captain America fait partie de l'équipe de super-héro
                 width: "100%",
               }}
             />
+          </div>
+          <div
+            style={{ display: "flex", justifyContent: "end", marginTop: 5 }}
+            onClick={sauvegarderLeSuperhero}
+          >
+            <button>Modifier</button>
           </div>
         </div>
       </Superheros>
