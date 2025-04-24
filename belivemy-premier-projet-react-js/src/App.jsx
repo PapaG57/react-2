@@ -10,6 +10,11 @@ import { useState } from "react";
 export default function App() {
   // State
   const [superHerosPrefere, setSuperheroPrefere] = useState();
+  const [nomDuSuperhero, setNomDuSuperhero] = useState("Anonyme");
+  const [descriptionDuSuperhero, setDescriptionDuSuperhero] = useState(
+    "Pas de description définis"
+  );
+  const [photoDuSuperhero, setPhotoDuSuperhero] = useState("");
 
   // Fonction
   const superheroClique = (nom) => {
@@ -66,6 +71,78 @@ Depuis les années 1960, Captain America fait partie de l'équipe de super-héro
           estLePrefere={superHerosPrefere == "Captain America"}
           superheroClique={superheroClique}
         />
+
+        <Superhero
+          nom={nomDuSuperhero}
+          description={
+            descriptionDuSuperhero != "" ? descriptionDuSuperhero : undefined
+          }
+          photo={photoDuSuperhero != "" ? photoDuSuperhero : undefined}
+        />
+
+        {/* Paramétrage de notre superhero */}
+        <div
+          style={{
+            border: "1px solid black",
+            padding: "15px",
+          }}
+        >
+          <h3 style={{ textAlign: "center" }}>Crée ton propre superhero</h3>
+          <div style={{ marginTop: 10 }}>
+            <label htmlFor="nom">Photo</label>
+            <input
+              type="text"
+              name="photo"
+              id="photo"
+              value={photoDuSuperhero}
+              onChange={(event) => {
+                setPhotoDuSuperhero(event.target.value);
+              }}
+              style={{
+                padding: 5,
+                fontSise: 14,
+                display: "block",
+                width: "100%",
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="nom">Nom</label>
+            <input
+              type="text"
+              name="nom"
+              id="nom"
+              value={nomDuSuperhero}
+              onChange={(event) => {
+                setNomDuSuperhero(event.target.value);
+              }}
+              style={{
+                padding: 5,
+                fontSise: 14,
+                display: "block",
+                width: "100%",
+              }}
+            />
+          </div>
+          <div style={{ marginTop: 10 }}>
+            <label htmlFor="description">Description</label>
+            <input
+              type="text"
+              name="description"
+              id="description"
+              value={descriptionDuSuperhero}
+              onChange={(event) => {
+                setDescriptionDuSuperhero(event.target.value);
+              }}
+              style={{
+                padding: 5,
+                fontSise: 14,
+                display: "block",
+                width: "100%",
+              }}
+            />
+          </div>
+        </div>
       </Superheros>
     </main>
   );

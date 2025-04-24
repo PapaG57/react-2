@@ -3,21 +3,21 @@ import { useState } from "react";
 
 export default function Superhero({
   nom,
-  description,
+  description = "Pas de description pour l'instant.",
   films = ["Aucun film pour ce superhero"],
   photo = ["./inconnu.png"],
-  details,
+  details = "Aucun nouveau détail.",
   estLePrefere,
-  superheroClique,
+  superheroClique = () => {},
   ...props
 }) {
   // State
   const [montrerLesDetails, setMontrerLesDetails] = useState(false);
 
-  let contenu = "";
-  if (montrerLesDetails) {
-    contenu = details;
-  }
+  // let contenu = "";
+  // if (montrerLesDetails) {
+  //   contenu = details;
+  // }
 
   return (
     <div
