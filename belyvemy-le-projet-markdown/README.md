@@ -1,12 +1,5 @@
-# React + Vite
+<textarea
+...
+defaultValue="# `Prévisualisateur - Believemy`&#13;### Oh ! De la magie !&#13;En réalité, pas vraiment : ceci s'appelle du markdown, et ce projet réalisé entièrement avec React permet de le transformer en _HTML_ !&#13;&#13;### Cas d'utilisation&#13;\* _italique_&#13;_ **gras**&#13;_ `monospace`&#13;_ ~~barré~~&#13;_ # h1&#13;_ ## h2&#13;_ ### h3&#13;\* #### etc&#13;[Believemy](https://believemy.com)"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+> </textarea>
